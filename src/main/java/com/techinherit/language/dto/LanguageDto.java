@@ -6,7 +6,7 @@ import lombok.Data;
 public class LanguageDto {
 
     private String language;
-    private String name;
-    private String charset;
+    private String lang;
+    private String charSet;
 
 }

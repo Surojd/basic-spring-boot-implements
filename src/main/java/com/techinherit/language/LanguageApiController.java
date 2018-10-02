@@ -7,6 +7,7 @@ import com.techinherit.language.dao.LanguageTextDao;
 import com.techinherit.language.dto.KeyDto;
 import com.techinherit.language.dto.LanguageDto;
 import com.techinherit.language.dto.LanguageTextDto;
+import com.techinherit.language.mapper.LanguageMapper;
 import com.techinherit.language.model.Language;
 import com.techinherit.language.model.LanguageKey;
 import com.techinherit.language.model.LanguageText;
@@ -40,6 +41,7 @@ public class LanguageApiController {
     private MessageResolverMethod resolverMethod;
 
     private ServiceResponseImpl response;
+    private LanguageMapper languageMapper = LanguageMapper.INSTANCE;
 
     @GetMapping
     public ServiceResponseImpl<List<Language>> getLanguages() throws Exception {
@@ -51,10 +53,7 @@ public class LanguageApiController {
     @PostMapping
     public ServiceResponseImpl addLanguage(@RequestBody LanguageDto dto) throws Exception {
         response = new ServiceResponseImpl<>();
-        Language lang = new Language();
-        lang.setLang(dto.getLanguage());
-        lang.setLanguage(dto.getName());
-        lang.setCharSet(dto.getCharset());
+        Language lang = languageMapper.toLanguage(dto);
         languageDao.save(lang);
         return response;
     }
@@ -66,15 +65,13 @@ public class LanguageApiController {
         if (lang == null) {
             throw new Exception("Language Id not found");
         }
-        lang.setLang(dto.getLanguage());
-        lang.setLanguage(dto.getName());
-        lang.setCharSet(dto.getCharset());
+        languageMapper.toLanguage(lang, dto);
         languageDao.save(lang);
         return response;
     }
 
     @GetMapping("/keys")
-    public ServiceResponseImpl<List<Language>> getKeys() throws Exception {
+    public ServiceResponseImpl<List<LanguageKey>> getKeys() throws Exception {
         response = new ServiceResponseImpl<>();
         response.setData(keyDao.findAll());
         return response;
@@ -102,7 +99,7 @@ public class LanguageApiController {
     }
 
     @GetMapping("/text/key/{key}")
-    public ServiceResponseImpl<LanguageText> getText(@PathVariable String key) throws Exception {
+    public ServiceResponseImpl<String> getText(@PathVariable String key) throws Exception {
         response = new ServiceResponseImpl<>();
         response.setData(resolverMethod.getMessage(key));
         return response;
