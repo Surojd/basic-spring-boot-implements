@@ -10,17 +10,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
 @Entity
-@Table(name = "language")
-@NamedQueries({
-    @NamedQuery(name = "Language.findAll", query = "SELECT l FROM Language l")})
 public class Language implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,83 +47,8 @@ public class Language implements Serializable {
     @JsonIgnore
     private List<LanguageText> languageTextList;
 
-    public Language() {
-    }
-
-    public Language(Integer id) {
+    public Language(int id) {
         this.id = id;
-    }
-
-    public Language(Integer id, String lang, String language, String charSet) {
-        this.id = id;
-        this.lang = lang;
-        this.language = language;
-        this.charSet = charSet;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getLang() {
-        return lang;
-    }
-
-    public void setLang(String lang) {
-        this.lang = lang;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public String getCharSet() {
-        return charSet;
-    }
-
-    public void setCharSet(String charSet) {
-        this.charSet = charSet;
-    }
-
-    public List<LanguageText> getLanguageTextList() {
-        return languageTextList;
-    }
-
-    public void setLanguageTextList(List<LanguageText> languageTextList) {
-        this.languageTextList = languageTextList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Language)) {
-            return false;
-        }
-        Language other = (Language) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.techinherit.tracking.language.model.Language[ id=" + id + " ]";
     }
 
 }

@@ -11,15 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
 @Entity
-@Table(name = "language_text")
-@NamedQueries({
-    @NamedQuery(name = "LanguageText.findAll", query = "SELECT l FROM LanguageText l")})
 public class LanguageText implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,71 +40,4 @@ public class LanguageText implements Serializable {
     @ManyToOne(optional = false)
     @JsonIgnore
     private LanguageKey keyId;
-
-    public LanguageText() {
-    }
-
-    public LanguageText(Integer id) {
-        this.id = id;
-    }
-
-    public LanguageText(Integer id, byte[] text) {
-        this.id = id;
-        this.text = text;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public byte[] getText() {
-        return text;
-    }
-
-    public void setText(byte[] text) {
-        this.text = text;
-    }
-
-    public Language getLangId() {
-        return langId;
-    }
-
-    public void setLangId(Language langId) {
-        this.langId = langId;
-    }
-
-    public LanguageKey getKeyId() {
-        return keyId;
-    }
-
-    public void setKeyId(LanguageKey keyId) {
-        this.keyId = keyId;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof LanguageText)) {
-            return false;
-        }
-        LanguageText other = (LanguageText) object;
-        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
-    }
-
-    @Override
-    public String toString() {
-        return "com.techinherit.tracking.language.model.LanguageText[ id=" + id + " ]";
-    }
-
 }
