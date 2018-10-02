@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.techinherit</groupId>
-    <artifactId>tracking</artifactId>
+    <artifactId>basic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Tracking</name>
-    <description>Tracking</description>
+    <name>basic</name>
+    <description>basic</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

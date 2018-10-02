@@ -48,27 +48,6 @@ public class UserServiceImpl implements UserService {
             user.setLastLoginDate(new Date());
             userDao.save(user);
         }
-        int leftLimit = 97; // letter 'a'
-        int rightLimit = 122; // letter 'z'
-        int targetStringLength = 10;
-//        for (int i = 0; i < 100; i++) {
-//            StringBuilder buffer = new StringBuilder(targetStringLength);
-//            for (int l = 0; l < targetStringLength; l++) {
-//                int randomLimitedInt = leftLimit + (int) (Math.random() * (rightLimit - leftLimit + 1));
-//                buffer.append((char) randomLimitedInt);
-//            }
-//            String generatedString = buffer.toString();
-//            Users user = new Users();
-//            user.setUsername(generatedString);
-//            user.setPassword(passwordEncoder.encode("admin"));
-//            user.setFirstName("admin");
-//            user.setLastName("admin");
-//            user.setUserRole(UserRole.ROLE_DRIVER);
-//            user.setUserStatus(UserStatus.ACTIVE);
-//            user.setLastPasswordResetDate(new Date());
-//            user.setLastLoginDate(new Date());
-//            userDao.save(user);
-//        }
     }
 
     @Override

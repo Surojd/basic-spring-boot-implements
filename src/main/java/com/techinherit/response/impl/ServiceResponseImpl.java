@@ -1,6 +1,6 @@
 package com.techinherit.response.impl;
 
-import com.techinherit.tracking.enums.ErrorCode;
+import com.techinherit.enums.ErrorCode;
 import com.techinherit.response.ServiceResponse;
 import java.util.Date;
 

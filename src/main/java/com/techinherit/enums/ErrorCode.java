@@ -1,6 +1,9 @@
 package com.techinherit.enums;
 
 public enum ErrorCode {
-    A403
-
+    U010,
+    U015,
+    M001,
+    A403,
+    V001
 }

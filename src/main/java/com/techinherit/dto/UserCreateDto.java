@@ -1,8 +1,8 @@
 package com.techinherit.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.techinherit.tracking.enums.UserRole;
-import com.techinherit.tracking.enums.UserStatus;
+import com.techinherit.enums.UserRole;
+import com.techinherit.enums.UserStatus;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 

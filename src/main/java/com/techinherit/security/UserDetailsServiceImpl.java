@@ -1,8 +1,8 @@
 package com.techinherit.security;
 
-import com.techinherit.tracking.entity.Users;
-import com.techinherit.tracking.enums.UserStatus;
 import com.techinherit.dao.UserRepository;
+import com.techinherit.entity.Users;
+import com.techinherit.enums.UserStatus;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
