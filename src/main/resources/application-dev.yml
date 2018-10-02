@@ -15,7 +15,7 @@ spring:
             dialect: org.hibernate.dialect.MySQL5Dialect
             naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
     datasource:
-        url: jdbc:mysql://localhost/tracking
+        url: jdbc:mysql://localhost/basic
         username: root
         password: 
         driver-class-name: com.mysql.jdbc.Driver
@@ -27,8 +27,8 @@ spring:
             INDENT_OUTPUT: false
     mail:
         host: smtp.zoho.com
-        username: no-reply@gsewa.com.np
-        password: 7fx1Wwe9tF9L
+        username: no-replay@domain.com
+        password: password
         port: 587
         properties:
             mail.smtp:
@@ -45,4 +45,4 @@ app:
     
 fcm.api:
     url: https://fcm.googleapis.com/fcm/send
-    key:   AAAAoZWM_y4:APA91bFLbw9blGNym3JycE4J05uZap83-DCYlQYuCRCaGC7F0577BGWKLPf3Fqo-H-QikAcmekcJidn_cjMnHv0am8g2N255ygMKaYShbM58I8PTk2kN4AzNybNXOPn9-2gtfM4MN0UI 
+    key:   firebase-api-key
