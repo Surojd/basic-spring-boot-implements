@@ -11,11 +11,12 @@ import com.techinherit.language.mapper.LanguageMapper;
 import com.techinherit.language.model.Language;
 import com.techinherit.language.model.LanguageKey;
 import com.techinherit.language.model.LanguageText;
-import com.techinherit.response.impl.ServiceResponseImpl;
+import com.techinherit.basic.response.impl.ServiceResponseImpl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @RequestMapping("/api/language")
+@Secured("ROLE_ADMIN")
 public class LanguageApiController {
 
     @Autowired

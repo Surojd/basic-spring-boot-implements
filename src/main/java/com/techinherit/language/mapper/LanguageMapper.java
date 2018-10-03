@@ -1,7 +1,7 @@
 package com.techinherit.language.mapper;
 
-import com.techinherit.dto.UserResponseDto;
-import com.techinherit.entity.Users;
+import com.techinherit.basic.dto.UserResponseDto;
+import com.techinherit.basic.entity.Users;
 import com.techinherit.language.dto.LanguageDto;
 import com.techinherit.language.model.Language;
 import java.util.List;
