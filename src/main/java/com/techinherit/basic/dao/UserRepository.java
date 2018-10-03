@@ -1,6 +1,6 @@
 package com.techinherit.basic.dao;
 
-import com.techinherit.basic.entity.Users;
+import com.techinherit.yourpackage.entity.Users;
 import com.techinherit.basic.enums.UserRole;
 import java.util.List;
 import org.springframework.data.domain.Page;

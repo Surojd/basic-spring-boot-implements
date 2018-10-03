@@ -1,4 +1,4 @@
-package com.techinherit.basic.entity;
+package com.techinherit.yourpackage.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.techinherit.basic.enums.UserRole;

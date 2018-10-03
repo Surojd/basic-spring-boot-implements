@@ -1,7 +1,7 @@
 package com.techinherit.basic.security;
 
 import com.techinherit.basic.dao.UserRepository;
-import com.techinherit.basic.entity.Users;
+import com.techinherit.yourpackage.entity.Users;
 import com.techinherit.basic.enums.UserStatus;
 import java.util.ArrayList;
 import java.util.HashSet;

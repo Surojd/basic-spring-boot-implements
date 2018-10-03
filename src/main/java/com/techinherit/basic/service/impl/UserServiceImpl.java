@@ -3,7 +3,7 @@ package com.techinherit.basic.service.impl;
 import com.techinherit.basic.dao.UserRepository;
 import com.techinherit.basic.dto.UserCreateDto;
 import com.techinherit.basic.dto.UserResponseDto;
-import com.techinherit.basic.entity.Users;
+import com.techinherit.yourpackage.entity.Users;
 import com.techinherit.basic.enums.ErrorCode;
 import com.techinherit.basic.enums.UserRole;
 import com.techinherit.basic.enums.UserStatus;

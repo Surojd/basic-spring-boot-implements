@@ -2,7 +2,7 @@ package com.techinherit.basic.mapper;
 
 import com.techinherit.basic.dto.UserResponseDto;
 import com.techinherit.basic.dto.UserCreateDto;
-import com.techinherit.basic.entity.Users;
+import com.techinherit.yourpackage.entity.Users;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
