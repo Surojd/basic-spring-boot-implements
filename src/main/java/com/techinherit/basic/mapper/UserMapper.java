@@ -5,12 +5,9 @@ import com.techinherit.basic.dto.UserCreateDto;
 import com.techinherit.yourpackage.entity.Users;
 import java.util.List;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = {})
+@Mapper(componentModel = "spring")
 public interface UserMapper {
-
-    UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
     Users toUser(UserCreateDto cdr);
 

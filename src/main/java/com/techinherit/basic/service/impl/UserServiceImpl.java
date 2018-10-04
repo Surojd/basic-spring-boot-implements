@@ -29,9 +29,10 @@ public class UserServiceImpl implements UserService {
     private UserRepository userDao;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
-    UserMapper mapper = UserMapper.INSTANCE;
+    @Autowired
+    private UserMapper mapper;
 
     @PostConstruct
     public void admin() {
@@ -67,7 +68,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<UserResponseDto> findByUserRole(UserRole role, Pageable pg) throws Exception {
         Page<Users> page = userDao.findByUserRole(role, pg);
-        List<UserResponseDto> list = UserMapper.INSTANCE.toUserResponseList((List<Users>) page.getContent());
+        List<UserResponseDto> list = mapper.toUserResponseList((List<Users>) page.getContent());
         Page<UserResponseDto> pageResp = new PageImpl<>(list, page.getPageable(), page.getTotalElements());
         return pageResp;
     }

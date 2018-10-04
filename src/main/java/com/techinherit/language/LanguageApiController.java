@@ -43,7 +43,9 @@ public class LanguageApiController {
     private MessageResolverMethod resolverMethod;
 
     private ServiceResponseImpl response;
-    private LanguageMapper languageMapper = LanguageMapper.INSTANCE;
+    
+    @Autowired
+    private LanguageMapper languageMapper;
 
     @GetMapping
     public ServiceResponseImpl<List<Language>> getLanguages() throws Exception {
