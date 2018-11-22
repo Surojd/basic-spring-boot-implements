@@ -1,4 +1,4 @@
-package com.techinherit.basic.dto;
+package com.techinherit.yourpackage.dto;
 
 import lombok.Data;
 

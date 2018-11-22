@@ -1,35 +1,21 @@
 package com.techinherit.basic.response;
 
-import com.techinherit.basic.enums.ErrorCode;
+import com.techinherit.yourpackage.enums.ErrorCode;
+import lombok.Data;
 
+@Data
 public class MyException extends Exception {
 
     private ErrorCode errorCode;
-    private Object errors;
+    private Object data;
 
     public MyException(ErrorCode errorCode) {
         this.errorCode = errorCode;
     }
 
-    public MyException(ErrorCode errorCode, Object errors) {
+    public MyException(ErrorCode errorCode, Object data) {
         this.errorCode = errorCode;
-        this.errors = errors;
-    }
-
-    public ErrorCode getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(ErrorCode errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public Object getErrors() {
-        return errors;
-    }
-
-    public void setErrors(Object errors) {
-        this.errors = errors;
+        this.data = data;
     }
 
 }

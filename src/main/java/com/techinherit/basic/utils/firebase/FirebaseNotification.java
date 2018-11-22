@@ -1,7 +1,7 @@
 package com.techinherit.basic.utils.firebase;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.techinherit.basic.response.impl.ServiceResponseImpl;
+import com.techinherit.basic.response.ServiceResponse;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class FirebaseNotification {
     ObjectMapper mapper;
 
 //    @PostMapping
-    public ServiceResponseImpl pushFCMNotification(FirebaseDto firebase) {
-        ServiceResponseImpl response = new ServiceResponseImpl();
+    public ServiceResponse pushFCMNotification(FirebaseDto firebase) {
+        ServiceResponse response = new ServiceResponse();
         try {
             Map<String, Object> json = new HashMap<>();
             json.put("to", firebase.getDeviceToken().trim());

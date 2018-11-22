@@ -1,7 +1,6 @@
 package com.techinherit.basic.response;
 
-import com.techinherit.basic.enums.ErrorCode;
-import com.techinherit.basic.response.impl.ServiceResponseImpl;
+import com.techinherit.yourpackage.enums.ErrorCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
@@ -16,22 +15,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MyExceptionHandler {
 
-    ServiceResponseImpl serviceResponse;
+    ServiceResponse serviceResponse;
 
     @ResponseBody
     @ExceptionHandler
     public ResponseEntity<?> handleBusinessValidationException(Exception exception) {
         HttpStatus status = HttpStatus.OK;
-        serviceResponse = new ServiceResponseImpl();
+        serviceResponse = new ServiceResponse();
         if (exception instanceof MyException) {
             MyException ex = (MyException) exception;
+            serviceResponse.setData(ex.getData());
             serviceResponse.setErrorCode(ex.getErrorCode());
-            if (ex.getErrors() != null) {
-                serviceResponse.setData(ex.getErrors());
-            }
         } else if (exception instanceof BadCredentialsException) {
             BadCredentialsException bce = (BadCredentialsException) exception;
-            serviceResponse.setErrorCode(ErrorCode.U010);
+            serviceResponse.setErrorCode(ErrorCode.U002);
         } else if (exception instanceof AccessDeniedException) {
             status = HttpStatus.FORBIDDEN;
             serviceResponse.setErrorCode(ErrorCode.A403);
@@ -39,8 +36,7 @@ public class MyExceptionHandler {
             status = HttpStatus.FORBIDDEN;
             serviceResponse.setErrorCode(ErrorCode.A403);
         } else {
-            exception.printStackTrace();
-            serviceResponse.setException(ErrorCode.M001, exception.getMessage());
+            serviceResponse.setErrorCode(ErrorCode.M001);
         }
         return new ResponseEntity<>(serviceResponse, status);
     }

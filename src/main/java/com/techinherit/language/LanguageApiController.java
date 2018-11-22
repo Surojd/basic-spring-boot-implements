@@ -1,5 +1,6 @@
 package com.techinherit.language;
 
+import com.techinherit.basic.response.ServiceResponse;
 import com.techinherit.language.config.MessageResolverMethod;
 import com.techinherit.language.dao.LanguageDao;
 import com.techinherit.language.dao.LanguageKeyDao;
@@ -11,10 +12,7 @@ import com.techinherit.language.mapper.LanguageMapper;
 import com.techinherit.language.model.Language;
 import com.techinherit.language.model.LanguageKey;
 import com.techinherit.language.model.LanguageText;
-import com.techinherit.basic.response.impl.ServiceResponseImpl;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,29 +40,29 @@ public class LanguageApiController {
     @Autowired
     private MessageResolverMethod resolverMethod;
 
-    private ServiceResponseImpl response;
-    
+    private ServiceResponse response;
+
     @Autowired
     private LanguageMapper languageMapper;
 
     @GetMapping
-    public ServiceResponseImpl<List<Language>> getLanguages() throws Exception {
-        response = new ServiceResponseImpl<>();
+    public ServiceResponse<List<Language>> getLanguages() throws Exception {
+        response = new ServiceResponse<>();
         response.setData(languageDao.findAll());
         return response;
     }
 
     @PostMapping
-    public ServiceResponseImpl addLanguage(@RequestBody LanguageDto dto) throws Exception {
-        response = new ServiceResponseImpl<>();
+    public ServiceResponse addLanguage(@RequestBody LanguageDto dto) throws Exception {
+        response = new ServiceResponse<>();
         Language lang = languageMapper.toLanguage(dto);
         languageDao.save(lang);
         return response;
     }
 
     @PutMapping("/{id}")
-    public ServiceResponseImpl updateLanguage(@RequestBody LanguageDto dto, @PathVariable Integer id) throws Exception {
-        response = new ServiceResponseImpl<>();
+    public ServiceResponse updateLanguage(@RequestBody LanguageDto dto, @PathVariable Integer id) throws Exception {
+        response = new ServiceResponse<>();
         Language lang = languageDao.findById(id).orElse(null);
         if (lang == null) {
             throw new Exception("Language Id not found");
@@ -75,15 +73,15 @@ public class LanguageApiController {
     }
 
     @GetMapping("/keys")
-    public ServiceResponseImpl<List<LanguageKey>> getKeys() throws Exception {
-        response = new ServiceResponseImpl<>();
+    public ServiceResponse<List<LanguageKey>> getKeys() throws Exception {
+        response = new ServiceResponse<>();
         response.setData(keyDao.findAll());
         return response;
     }
 
     @PostMapping("/key")
-    public ServiceResponseImpl addKey(@RequestBody KeyDto dto) throws Exception {
-        response = new ServiceResponseImpl<>();
+    public ServiceResponse addKey(@RequestBody KeyDto dto) throws Exception {
+        response = new ServiceResponse<>();
         LanguageKey key = new LanguageKey();
         key.setKeyName(dto.getKey());
         keyDao.save(key);
@@ -91,8 +89,8 @@ public class LanguageApiController {
     }
 
     @PutMapping("/key/{id}")
-    public ServiceResponseImpl getKeys(@RequestBody KeyDto dto, @PathVariable Integer id) throws Exception {
-        response = new ServiceResponseImpl<>();
+    public ServiceResponse getKeys(@RequestBody KeyDto dto, @PathVariable Integer id) throws Exception {
+        response = new ServiceResponse<>();
         LanguageKey key = keyDao.findById(id).orElse(null);
         if (key == null) {
             throw new Exception("Key not found");
@@ -103,15 +101,15 @@ public class LanguageApiController {
     }
 
     @GetMapping("/text/key/{key}")
-    public ServiceResponseImpl<String> getText(@PathVariable String key) throws Exception {
-        response = new ServiceResponseImpl<>();
+    public ServiceResponse<String> getText(@PathVariable String key) throws Exception {
+        response = new ServiceResponse<>();
         response.setData(resolverMethod.getMessage(key));
         return response;
     }
 
     @GetMapping("/text/{id}")
-    public ServiceResponseImpl<LanguageText> updateText(@RequestBody LanguageTextDto dto, @PathVariable Integer id) throws Exception {
-        response = new ServiceResponseImpl<>();
+    public ServiceResponse<LanguageText> updateText(@RequestBody LanguageTextDto dto, @PathVariable Integer id) throws Exception {
+        response = new ServiceResponse<>();
         LanguageText key = textDao.findById(id).orElse(null);
         if (key == null) {
             throw new Exception("Language Text Id not found");
@@ -122,8 +120,8 @@ public class LanguageApiController {
     }
 
     @PostMapping("/{langId}/{keyId}/text")
-    public ServiceResponseImpl addLang(@RequestBody LanguageTextDto dto, @PathVariable Integer langId, @PathVariable Integer keyId) throws Exception {
-        response = new ServiceResponseImpl();
+    public ServiceResponse addLang(@RequestBody LanguageTextDto dto, @PathVariable Integer langId, @PathVariable Integer keyId) throws Exception {
+        response = new ServiceResponse();
         Language lang = languageDao.findById(langId).orElse(null);
         if (lang == null) {
             throw new Exception("Language Id not found");
