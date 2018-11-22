@@ -43,6 +43,7 @@ app:
     secret: aeekok5rt4565ythgfbvcd
     expiration: 150000
     header: Authorization
+    sms-expiration: 600000
     
 fcm.api:
     url: https://fcm.googleapis.com/fcm/send
